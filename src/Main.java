@@ -1,15 +1,29 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
+/**
+ * Клас для тестування MatrixAnalyzer.
+ */
 public class Main {
 
     public static void main(String[] args) {
-        int [][] matrix = new int[3][3];
-        int x=0;
+        Scanner scanner = new Scanner(System.in);
 
-        for(int[] row:matrix)
-            Arrays.fill(row,x);
+        System.out.print("Enter the number of lines (N): ");
+        int rows = scanner.nextInt();
 
-        for(int[] row:matrix)
+        System.out.print("Enter the number of columns (M): ");
+        int cols = scanner.nextInt();
+
+        int[][] matrix = MatrixAnalyzer.generateRandomMatrix(rows, cols);
+
+        System.out.println("\nGenerated matrix:");
+        for (int[] row : matrix) {
             System.out.println(Arrays.toString(row));
+        }
+
+        int maxColumnIndex = MatrixAnalyzer.findColumnWithMaxSum(matrix);
+        System.out.println("\nColumn with the maximum amount: " + maxColumnIndex);
     }
 }
+
